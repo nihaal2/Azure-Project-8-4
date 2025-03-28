@@ -15,7 +15,7 @@ jobs:
     steps:
     - name: Checkout repository
       uses: actions/checkout@v2
-      with: ${{ github.event.inputs.branch-name }}
+      with: ${{ github.event.inputs}}
 
     - name: Set up Python
       uses: actions/setup-python@v2

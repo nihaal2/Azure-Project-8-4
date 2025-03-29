@@ -12,7 +12,7 @@ def get_force_app_components(path):
         for file in files:
             if file.endswith('.xml'):
                 component_path = os.path.relpath(os.path.join(root, file), path)
-                components.append(component_path)
+                components.append(component_path.replace('\\', '/'))
     return components
 
 # Function to get all components listed in package.xml
@@ -21,8 +21,10 @@ def get_package_xml_components(path):
     root = tree.getroot()
     namespaces = {'sf': 'http://soap.sforce.com/2006/04/metadata'}
     components = []
-    for member in root.findall('.//sf:members', namespaces):
-        components.append(member.text.replace('/', os.sep) + '.xml')
+    for types in root.findall('types'):
+        name = types.find('name').text
+        for member in types.findall('members'):
+            components.append(f"{name}/{member.text}.xml")
     return components
 
 # Get components from force-app and package.xml
@@ -34,12 +36,15 @@ missing_in_package_xml = set(force_app_components) - set(package_xml_components)
 
 print(force_app_components)
 print(package_xml_components)
-print(manifest/package.xml)
 
 # Print missing components
 if missing_in_package_xml:
     print("Components in force-app not in package.xml:")
     for component in missing_in_package_xml:
+        print(component)
+    exit(1)  # Exit with error code if there are missing components
+else:
+    print("All components in force-app are included in package.xml.")
         print(component)
     exit(1)  # Exit with error code if there are missing components
 else:

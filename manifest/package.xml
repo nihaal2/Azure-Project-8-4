@@ -4,5 +4,9 @@
         <members>Account.Dummy__c</members>
         <name>CustomField</name>
     </types>
+    <types>
+        <members>newclass</members>
+        <name>ApexClass</name>
+    </types>    
     <version>55.0</version>
 </Package>

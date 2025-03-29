@@ -28,4 +28,4 @@ jobs:
         pip install xmltodict
 
     - name: Run components python script
-      run: python_test.py
+      run: python python_test.py

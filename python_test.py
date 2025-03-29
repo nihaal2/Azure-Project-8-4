@@ -32,6 +32,10 @@ package_xml_components = get_package_xml_components(package_xml_path)
 # Find components in force-app not in package.xml
 missing_in_package_xml = set(force_app_components) - set(package_xml_components)
 
+print(force_app_components)
+print(package_xml_components)
+print(manifest/package.xml)
+
 # Print missing components
 if missing_in_package_xml:
     print("Components in force-app not in package.xml:")

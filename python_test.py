@@ -45,7 +45,7 @@ if missing_in_package_xml:
     exit(1)  # Exit with error code if there are missing components
 else:
     print("All components in force-app are included in package.xml.")
-        print(component)
+    print(component)
     exit(1)  # Exit with error code if there are missing components
 else:
     print("All components in force-app are included in package.xml.")

@@ -1,4 +1,4 @@
-name: Check package.xml 
+name: Check package.xml 2
 
 on:
   workflow_dispatch:

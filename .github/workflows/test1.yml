@@ -28,4 +28,4 @@ jobs:
         pip install xmltodict
 
     - name: Run components python script
-      run: nihaal2/Azure-Project-8-4/python_test.py
+      run: python_test.py

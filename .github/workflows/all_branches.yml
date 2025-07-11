@@ -1,0 +1,2 @@
+- name: List all branches
+  run: git branch -a

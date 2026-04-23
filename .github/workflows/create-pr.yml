@@ -32,24 +32,24 @@ jobs:
               owner: context.repo.owner,
               repo: context.repo.repo,
               head: `${context.repo.owner}:${branch}`,
-              base: 'develop',
+              base: 'develop-main',
               state: 'open'
             });
 
             if (existingPrs.length > 0) {
               const pr = existingPrs[0];
               core.setOutput('pr_number', pr.number);
-              console.log(`PR #${pr.number} already exists for ${branch} → develop. Skipping creation.`);
+              console.log(`PR #${pr.number} already exists for ${branch} → develop-main. Skipping creation.`);
               return;
             }
 
             const { data: pr } = await github.rest.pulls.create({
               owner: context.repo.owner,
               repo: context.repo.repo,
-              title: `Merge ${branch} into develop`,
+              title: `Merge ${branch} into develop-main`,
               head: branch,
-              base: 'develop',
-              body: `Automated PR created by GitHub Actions to merge \`${branch}\` into \`develop\`.`
+              base: 'develop-main',
+              body: `Automated PR created by GitHub Actions to merge \`${branch}\` into \`develop-main\`.`
             });
             core.setOutput('pr_number', pr.number);
             console.log(`Pull request #${pr.number} created successfully.`);

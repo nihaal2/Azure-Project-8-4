@@ -3,7 +3,7 @@ name: Create Pull Request
 on:
   push:
     branches:
-      - 'feature-**'
+      - 'feature/**'
 
 permissions:
   contents: write
@@ -62,9 +62,9 @@ jobs:
               owner: context.repo.owner,
               repo: context.repo.repo,
               pull_number: pr.number,
-              reviewers: ['${{ vars.DEFAULT_REVIEWER }}']
+              reviewers: ['svenkatasastryd']
             });
-            console.log(`Reviewer ${{ vars.DEFAULT_REVIEWER }} added to PR #${pr.number}.`);
+            console.log(`Reviewer svenkatasastryd added to PR #${pr.number}.`);
 
       - name: Request Copilot Review
         uses: actions/github-script@v7

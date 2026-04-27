@@ -1,6 +1,6 @@
 public class newclass {
     
-    public static void testmethod(boolean a) {
+    public static void testmethod(boolean b) {
         
         }
     }
